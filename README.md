@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Little Lemon Web Application
 
 > **Meta Back-End Developer Professional Certificate — Capstone Project**  
@@ -142,3 +143,6 @@ project/
 ├── Insomnia_LittleLemon_API.json # Complete Insomnia collection
 └── manage.py
 ```
+=======
+# Project-
+>>>>>>> 509ae2707354b2bb1250a8e99b74d248da02e177
