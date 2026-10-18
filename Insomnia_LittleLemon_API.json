@@ -1,0 +1,278 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-10-18T13:30:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_littlelemon",
+      "_type": "workspace",
+      "name": "Little Lemon API - Meta Capstone",
+      "description": "Insomnia test collection for Little Lemon restaurant APIs (Meta Back-End Developer Capstone)",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_littlelemon",
+      "_type": "environment",
+      "parentId": "wrk_littlelemon",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://127.0.0.1:8000",
+        "token": "8b45fc17a70be484626b108b53ba705b00001bca"
+      }
+    },
+    {
+      "_id": "fld_auth",
+      "_type": "request_group",
+      "parentId": "wrk_littlelemon",
+      "name": "1. Authentication & Registration"
+    },
+    {
+      "_id": "fld_menu",
+      "_type": "request_group",
+      "parentId": "wrk_littlelemon",
+      "name": "2. Menu Items API"
+    },
+    {
+      "_id": "fld_booking",
+      "_type": "request_group",
+      "parentId": "wrk_littlelemon",
+      "name": "3. Table Booking API"
+    },
+    {
+      "_id": "req_reg_custom",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "User Registration (/api/registration/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/registration/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_reg_djoser",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Djoser User Registration (/auth/users/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/auth/users/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"djoser_user\",\n  \"email\": \"djoser@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_login_token",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Obtain Token (/api-token-auth/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api-token-auth/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"customer\",\n  \"password\": \"customer1234\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_djoser_token",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Djoser Token Login (/auth/token/login/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/auth/token/login/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"customer\",\n  \"password\": \"customer1234\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_menu_list",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "List All Menu Items (/restaurant/menu/)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/restaurant/menu/",
+      "headers": []
+    },
+    {
+      "_id": "req_menu_list_alt",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "List All Menu Items (/api/menu-items/)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/menu-items/",
+      "headers": []
+    },
+    {
+      "_id": "req_menu_single",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "Get Single Menu Item (/restaurant/menu/1)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/restaurant/menu/1",
+      "headers": []
+    },
+    {
+      "_id": "req_menu_create",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "Create Menu Item (/restaurant/menu/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/restaurant/menu/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Tiramisu\",\n  \"price\": \"8.50\",\n  \"inventory\": 25\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_menu_update",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "Update Menu Item (/restaurant/menu/1)",
+      "method": "PUT",
+      "url": "{{ _.base_url }}/restaurant/menu/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Greek Salad Deluxe\",\n  \"price\": \"14.99\",\n  \"inventory\": 40\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_menu_delete",
+      "_type": "request",
+      "parentId": "fld_menu",
+      "name": "Delete Menu Item (/restaurant/menu/1)",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/restaurant/menu/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_booking_list",
+      "_type": "request",
+      "parentId": "fld_booking",
+      "name": "List Bookings (/api/bookings/)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/bookings/",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_booking_list_tables",
+      "_type": "request",
+      "parentId": "fld_booking",
+      "name": "List Bookings (/restaurant/booking/tables/)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/restaurant/booking/tables/",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_booking_create",
+      "_type": "request",
+      "parentId": "fld_booking",
+      "name": "Create Table Booking (/api/bookings/)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/api/bookings/",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Eleanor Vance\",\n  \"no_of_guests\": 4,\n  \"booking_date\": \"2026-10-30T19:00:00Z\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_booking_single",
+      "_type": "request",
+      "parentId": "fld_booking",
+      "name": "Get Booking Details (/api/bookings/1/)",
+      "method": "GET",
+      "url": "{{ _.base_url }}/api/bookings/1/",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_booking_delete",
+      "_type": "request",
+      "parentId": "fld_booking",
+      "name": "Delete Booking (/api/bookings/1/)",
+      "method": "DELETE",
+      "url": "{{ _.base_url }}/api/bookings/1/",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Token {{ _.token }}"
+        }
+      ]
+    }
+  ]
+}

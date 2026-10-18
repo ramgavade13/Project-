@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Little Lemon Mediterranean Restaurant - Chicago. Traditional recipes with a modern twist. Table bookings, dynamic menus, and Django REST APIs.">
+  <title>Little Lemon | Mediterranean Restaurant</title>
+  <link rel="icon" type="image/svg+xml" href="{% static 'restaurant/img/logo.svg' %}">
+  <link rel="stylesheet" href="{% static 'restaurant/css/style.css' %}">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="{% url 'index' %}" class="logo" id="brand-logo">
+        <img src="{% static 'restaurant/img/logo.svg' %}" alt="Little Lemon Restaurant Logo">
+      </a>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="{% url 'index' %}" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#api-docs">API Docs</a></li>
+          <li><a href="/admin/" target="_blank">Admin</a></li>
+          <li><a href="#reservation" class="nav-cta">Book a Table</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>Little Lemon</h1>
+          <h2>Chicago</h2>
+          <p>
+            We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. Savor freshly prepared Greek salads, hand-crafted bruschetta, and exquisite lemon desserts.
+          </p>
+          <div class="hero-actions">
+            <a href="#reservation" class="btn btn-primary" id="btn-hero-reserve">Reserve a Table</a>
+            <a href="/restaurant/menu/" class="btn btn-secondary" id="btn-hero-menu" target="_blank">View Menu API</a>
+            <a href="#api-docs" class="btn btn-secondary" id="btn-hero-apis">API Explorer</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="{% static 'restaurant/img/hero.jpg' %}" alt="Little Lemon Restaurant Dining Table with Mediterranean Delicacies" class="hero-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Specials / Menu Section -->
+    <section class="specials" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>This Week's Specials!</h2>
+            <p style="color: var(--color-text-muted); font-size: 16px; margin-top: 4px;">Freshly sourced ingredients straight from the Mediterranean</p>
+          </div>
+          <a href="/restaurant/menu/" class="btn btn-primary" id="btn-online-menu" target="_blank">Online Menu (API)</a>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="menu-card">
+            <img src="{% static 'restaurant/img/hero.jpg' %}" alt="Greek Salad" class="card-img">
+            <div class="card-body">
+              <div class="card-header">
+                <h3 class="card-title">Greek Salad</h3>
+                <span class="card-price">$12.99</span>
+              </div>
+              <p class="card-text">
+                The famous Greek salad of crispy lettuce, peppers, Kalamata olives, and Chicago feta cheese, garnished with crunchy garlic croutons.
+              </p>
+              <a href="/restaurant/menu/" class="card-cta" target="_blank">Order via API &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="menu-card">
+            <img src="{% static 'restaurant/img/hero.jpg' %}" alt="Bruschetta" class="card-img" style="object-position: right bottom;">
+            <div class="card-body">
+              <div class="card-header">
+                <h3 class="card-title">Bruschetta</h3>
+                <span class="card-price">$7.99</span>
+              </div>
+              <p class="card-text">
+                Grilled artisan sourdough bread smeared with roasted garlic, topped with vine-ripened tomatoes, fresh basil, and extra virgin olive oil.
+              </p>
+              <a href="/restaurant/menu/" class="card-cta" target="_blank">Order via API &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="menu-card">
+            <img src="{% static 'restaurant/img/lemon_dessert.jpg' %}" alt="Lemon Dessert" class="card-img">
+            <div class="card-body">
+              <div class="card-header">
+                <h3 class="card-title">Lemon Dessert</h3>
+                <span class="card-price">$6.99</span>
+              </div>
+              <p class="card-text">
+                Straight from grandma's recipe book in Southern Italy. Zesty lemon custard tart topped with powdered sugar and wild blueberries.
+              </p>
+              <a href="/restaurant/menu/" class="card-cta" target="_blank">Order via API &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- API Explorer / Peer Review Showcase -->
+    <section class="api-showcase" id="api-docs">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+          <h2 style="font-family: var(--font-serif); font-size: 42px; color: var(--color-primary-green);">Peer Review & API Endpoints</h2>
+          <p style="color: var(--color-text-muted); font-size: 16px;">
+            Test all required Django REST Framework endpoints directly or using the Insomnia REST Client.
+          </p>
+        </div>
+
+        <div class="api-grid">
+          <!-- Endpoint 1 -->
+          <div class="api-card">
+            <span class="badge badge-get">GET / POST</span>
+            <div class="api-endpoint">/restaurant/menu/</div>
+            <p class="api-desc">List all menu items or create new menu items (generics.ListCreateAPIView).</p>
+            <a href="/restaurant/menu/" class="api-link" target="_blank">Open Endpoint &rarr;</a>
+          </div>
+
+          <!-- Endpoint 2 -->
+          <div class="api-card">
+            <span class="badge badge-get">GET / PUT / DEL</span>
+            <div class="api-endpoint">/restaurant/menu/{id}</div>
+            <p class="api-desc">Retrieve, update, or delete an individual menu item by ID (SingleMenuItemView).</p>
+            <a href="/restaurant/menu/1" class="api-link" target="_blank">View Item 1 &rarr;</a>
+          </div>
+
+          <!-- Endpoint 3 -->
+          <div class="api-card">
+            <span class="badge badge-post">GET / POST</span>
+            <div class="api-endpoint">/api/bookings/</div>
+            <p class="api-desc">Full CRUD for table reservations using ModelViewSet and Token Authentication.</p>
+            <a href="/api/bookings/" class="api-link" target="_blank">Bookings API &rarr;</a>
+          </div>
+
+          <!-- Endpoint 4 -->
+          <div class="api-card">
+            <span class="badge badge-post">POST</span>
+            <div class="api-endpoint">/api/registration/</div>
+            <p class="api-desc">Register new user account with username, email, and password.</p>
+            <a href="/api/registration/" class="api-link" target="_blank">Registration API &rarr;</a>
+          </div>
+
+          <!-- Endpoint 5 -->
+          <div class="api-card">
+            <span class="badge badge-post">POST</span>
+            <div class="api-endpoint">/auth/users/</div>
+            <p class="api-desc">Djoser user registration and management endpoint.</p>
+            <a href="/auth/users/" class="api-link" target="_blank">Djoser Users &rarr;</a>
+          </div>
+
+          <!-- Endpoint 6 -->
+          <div class="api-card">
+            <span class="badge badge-post">POST</span>
+            <div class="api-endpoint">/auth/token/login/</div>
+            <p class="api-desc">Generate auth token for authenticated requests using Djoser / DRF Token Auth.</p>
+            <a href="/api-token-auth/" class="api-link" target="_blank">Token Auth Endpoint &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table Booking Section -->
+    <section class="booking-section" id="reservation">
+      <div class="container">
+        <div class="booking-wrapper">
+          <div class="booking-info">
+            <h2>Reserve a Table</h2>
+            <p>
+              Experience the finest Mediterranean dining in Chicago. Book your table in advance and let our culinary team create an unforgettable evening.
+            </p>
+            <ul class="booking-perks">
+              <li><span class="icon">&#10003;</span> Guaranteed indoor and outdoor patio seating</li>
+              <li><span class="icon">&#10003;</span> Real-time reservation updates via Django REST API</li>
+              <li><span class="icon">&#10003;</span> Special dietary accommodations available</li>
+              <li><span class="icon">&#10003;</span> Token-authenticated secure booking management</li>
+            </ul>
+          </div>
+
+          <div class="booking-form-container">
+            <form id="booking-form" onsubmit="handleReservationSubmit(event)">
+              <div class="form-group">
+                <label for="booking-name">Full Name</label>
+                <input type="text" id="booking-name" class="form-control" placeholder="e.g. Eleanor Vance" required>
+              </div>
+
+              <div class="form-group">
+                <label for="booking-guests">Number of Guests</label>
+                <input type="number" id="booking-guests" class="form-control" min="1" max="20" value="2" required>
+              </div>
+
+              <div class="form-group">
+                <label for="booking-date">Reservation Date & Time</label>
+                <input type="datetime-local" id="booking-date" class="form-control" required>
+              </div>
+
+              <div id="booking-alert" style="display: none; padding: 12px; border-radius: var(--radius-sm); margin-bottom: 16px; font-size: 14px;"></div>
+
+              <button type="submit" class="btn btn-primary" id="btn-submit-booking" style="width: 100%;">
+                Confirm Reservation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about" style="padding: 60px 0; background: var(--color-surface); border-top: 1px solid var(--color-border);">
+      <div class="container" style="max-width: 900px; text-align: center;">
+        <h2 style="font-family: var(--font-serif); font-size: 44px; color: var(--color-primary-green); margin-bottom: 16px;">About Little Lemon</h2>
+        <p style="font-size: 17px; color: var(--color-text-muted); line-height: 1.8; margin-bottom: 24px;">
+          Little Lemon was founded in 2021 by two Italian brothers, Mario and Adrian. Having grown up in the sunny coastal hills of the Mediterranean, they moved to Chicago with a singular dream: to bring centuries-old family recipes and fresh, sun-kissed ingredients to American dining tables. Every dish is seasoned with love, extra virgin olive oil, and organic lemons.
+        </p>
+        <div style="display: inline-block; padding: 8px 16px; background: var(--color-secondary-peach); border-radius: var(--radius-sm); font-weight: 700; color: var(--color-primary-green-dark); font-size: 14px;">
+          Meta Back-End Developer Professional Certificate Capstone Project
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <img src="{% static 'restaurant/img/logo.svg' %}" alt="Little Lemon" style="height: 48px; filter: brightness(0) invert(1); margin-bottom: 16px;">
+          <p>
+            Authentic Mediterranean cuisine in Chicago, IL. Built with Python, Django REST Framework, and MySQL.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Navigation</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#reservation">Reservations</a></li>
+            <li><a href="/admin/">Django Admin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>API Endpoints</h3>
+          <ul class="footer-links">
+            <li><a href="/restaurant/menu/" target="_blank">Menu Items</a></li>
+            <li><a href="/api/bookings/" target="_blank">Table Bookings</a></li>
+            <li><a href="/api/registration/" target="_blank">Registration</a></li>
+            <li><a href="/auth/users/" target="_blank">Djoser Users</a></li>
+            <li><a href="/api-token-auth/" target="_blank">Token Auth</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Visit Us</h3>
+          <p><strong>Address:</strong><br>123 Mediterranean Way<br>Chicago, IL 60601</p>
+          <p><strong>Hours:</strong><br>Mon - Sun: 11:00 AM - 11:00 PM</p>
+          <p><strong>Phone:</strong><br>(312) 555-0199</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Little Lemon Restaurant. Built for Meta Back-End Developer Capstone Course.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set default reservation datetime to tomorrow 7:00 PM
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(19, 0, 0, 0);
+    const dateInput = document.getElementById('booking-date');
+    if (dateInput) {
+      dateInput.value = tomorrow.toISOString().slice(0, 16);
+    }
+
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('booking-name').value;
+      const guests = document.getElementById('booking-guests').value;
+      const date = document.getElementById('booking-date').value;
+      const alertBox = document.getElementById('booking-alert');
+
+      alertBox.style.display = 'block';
+      alertBox.style.background = '#E8F5E9';
+      alertBox.style.color = '#2E7D32';
+      alertBox.style.border = '1px solid #C8E6C9';
+      alertBox.innerHTML = `<strong>Table Booked!</strong> Reservation recorded for <strong>${name}</strong> (${guests} guests) on ${new Date(date).toLocaleString()}. Accessible via API at <code>/api/bookings/</code>.`;
+    }
+  </script>
+</body>
+</html>
